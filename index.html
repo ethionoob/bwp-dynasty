@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Best Western Premier Dynasty Hotel | Addis Ababa</title>
+    
+    <!-- Google Fonts: Editorial Serif + Clean Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for sleek iconography -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        /* ===== LUXURY DESIGN SYSTEM ===== */
+        :root {
+            --primary: #0F1A24;       /* Deep Midnight Blue */
+            --accent: #D4AF37;        /* Brushed Champagne Gold */
+            --accent-hover: #AA8417;  /* Deep Gold */
+            --bg-light: #FBFBFA;      /* Gallery Alabaster */
+            --bg-dark: #152232;       /* Slate Contrast */
+            --text-main: #2D3136;     /* Soft Obsidian */
+            --text-muted: #6E747D;    /* Muted Slate */
+            --font-serif: 'Playfair Display', serif;
+            --font-sans: 'Inter', sans-serif;
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* ===== RESET & SMOOTHING ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background: var(--bg-light);
+            color: var(--text-main);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        /* ===== TYPOGRAPHY & HEADER STYLES ===== */
+        h1, h2, h3, h4 {
+            font-family: var(--font-serif);
+            font-weight: 400;
+            letter-spacing: -0.02em;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+
+        .section-tag {
+            font-family: var(--font-sans);
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.2em;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .section-title {
+            font-size: 2.8rem;
+            color: var(--primary);
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 1px;
+            background: var(--accent);
+        }
+
+        /* ===== PREMIUM BUTTONS ===== */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--accent);
+            color: #fff;
+            padding: 16px 40px;
+            border-radius: 0;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            transition: var(--transition);
+            border: 1px solid var(--accent);
+        }
+
+        .btn:hover {
+            background: var(--accent-hover);
+            border-color: var(--accent-hover);
+            transform: translateY(-3px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: #fff;
+        }
+
+        .btn-outline:hover {
+            background: #fff;
+            color: var(--primary);
+            border-color: #fff;
+        }
+
+        /* ===== NAVIGATION BAR ===== */
+        /* ===== FIXED LOGO & NAVIGATION BAR ===== */
+        header {
+            background: rgba(15, 26, 36, 0.95);
+            backdrop-filter: blur(10px);
+            color: #fff;
+            padding: 24px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .header-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px; /* Ensures safe spacing between logo and nav */
+        }
+
+        .logo {
+            font-family: var(--font-serif);
+            font-size: 1.4rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            white-space: nowrap; /* Prevents the hotel name from breaking */
+        }
+
+        .logo span {
+            color: var(--accent);
+            font-weight: 400;
+            font-family: var(--font-sans);
+            font-size: 0.8rem;
+            border: 1px solid var(--accent);
+            padding: 4px 10px;
+            margin-left: 10px;
+            vertical-align: middle;
+            letter-spacing: 0.1em;
+            display: inline-block; /* Forces the entire badge to stay as one solid box */
+            white-space: nowrap;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px; /* Marginally tightened to prevent squeezing on smaller screens */
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 500;
+            white-space: nowrap; /* Prevents "THE EXPERIENCE" and button text from wrapping */
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-cta {
+            background: var(--accent) !important;
+            color: #fff !important;
+            padding: 12px 28px !important; /* Slightly increased horizontal padding */
+            display: inline-block;
+        }
+
+        .nav-cta:hover {
+            background: var(--accent-hover) !important;
+        }
+        /* ===== IMMERSIVE HERO SECTION ===== */
+        .hero {
+            position: relative;
+            background: linear-gradient(rgba(15, 26, 36, 0.7), rgba(15, 26, 36, 0.85)), url('/images/hero.jpg') center/cover no-repeat;
+            color: #fff;
+            padding: 160px 0 140px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            line-height: 1.1;
+            margin-bottom: 25px;
+            font-weight: 400;
+        }
+
+        .hero h1 span {
+            font-style: italic;
+            color: var(--accent);
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            max-width: 650px;
+            margin: 0 auto 45px;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 300;
+            letter-spacing: 0.03em;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        /* ===== EDITORIAL ACCOMMODATIONS ===== */
+        section {
+            padding: 100px 0;
+        }
+
+        .room-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+        }
+
+        .room-card {
+            background: #fff;
+            border-radius: 0;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.02);
+            transition: var(--transition);
+            border: 1px solid #ECEBE8;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .room-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(15, 26, 36, 0.08);
+            border-color: var(--accent);
+        }
+
+        .room-image-placeholder {
+            height: 240px;
+            background: var(--bg-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255,255,255,0.2);
+            position: relative;
+        }
+
+        .room-image-placeholder i {
+            font-size: 3rem;
+            color: var(--accent);
+            opacity: 0.7;
+        }
+
+        .room-content {
+            padding: 35px 30px;
+            text-align: left;
+        }
+
+        .room-content h3 {
+            font-size: 1.6rem;
+            color: var(--primary);
+            margin-bottom: 12px;
+        }
+
+        .room-content p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+
+        /* ===== INTERACTIVE GALLERY PREVIEW SECTOR ===== */
+        .preview-gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .preview-img-wrapper {
+            position: relative;
+            height: 350px;
+            overflow: hidden;
+            background: #111;
+        }
+
+        .preview-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.85;
+            transition: var(--transition);
+        }
+
+        .preview-img-wrapper:hover img {
+            transform: scale(1.06);
+            opacity: 1;
+        }
+
+        .preview-overlay-title {
+            position: absolute;
+            bottom: 30px;
+            left: 30px;
+            font-family: var(--font-serif);
+            font-size: 1.4rem;
+            color: #fff;
+            text-shadow: 0 4px 12px rgba(0,0,0,0.5);
+        }
+
+        /* ===== THE RESORT AMENITIES ===== */
+        .amenities-section {
+            background: #F4F2EE;
+        }
+
+        .amenities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1px;
+            background: #E4E1DB;
+            border: 1px solid #E4E1DB;
+        }
+
+        .amenity-item {
+            background: #F4F2EE;
+            padding: 50px 40px;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .amenity-item:hover {
+            background: #fff;
+        }
+
+        .amenity-item i {
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 24px;
+        }
+
+        .amenity-item h4 {
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .amenity-item p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* ===== MAGAZINE-STYLE TESTIMONIAL ===== */
+        .testimonial-section {
+            background: var(--primary);
+            color: #fff;
+            text-align: center;
+            position: relative;
+        }
+
+        .testimonial {
+            max-width: 850px;
+            margin: 0 auto;
+            position: relative;
+            padding: 40px 0;
+        }
+
+        .testimonial p {
+            font-family: var(--font-serif);
+            font-size: 2rem;
+            line-height: 1.5;
+            font-style: italic;
+            color: #E2E8F0;
+            margin-bottom: 30px;
+        }
+
+        .testimonial .author {
+            font-family: var(--font-sans);
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.25em;
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        /* ===== URBAN ENVIRONMENT (SURROUNDINGS) ===== */
+        .surround-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+        }
+
+        .surround-card {
+            background: #fff;
+            padding: 40px;
+            border-left: 3px solid var(--accent);
+            box-shadow: 0 5px 25px rgba(0,0,0,0.02);
+            transition: var(--transition);
+        }
+
+        .surround-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+        }
+
+        .surround-card h4 {
+            font-size: 1.4rem;
+            color: var(--primary);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .surround-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* ===== FULL INTEGRATED GOOGLE MAPS BLOCK ===== */
+        .map-wrapper {
+            width: 100%;
+            height: 450px;
+            background: #e5e3df;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            margin-bottom: -100px; /* Merges cleanly into the contact section framing */
+            position: relative;
+            z-index: 5;
+        }
+
+        .map-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            filter: grayscale(0.2) contrast(1.1);
+        }
+
+        /* ===== SOPHISTICATED CONCIERGE & FOOTER ===== */
+        .contact-section {
+            background: var(--primary);
+            color: #fff;
+            padding-top: 180px; /* Provides separation spacing for overlay map framing */
+            padding-bottom: 60px;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 50px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 60px;
+        }
+
+        .contact-grid h4 {
+            color: #fff;
+            font-family: var(--font-sans);
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.15em;
+            font-weight: 600;
+            margin-bottom: 25px;
+            color: var(--accent);
+        }
+
+        .contact-grid p, .contact-grid div {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.95rem;
+            margin-bottom: 12px;
+        }
+
+        .contact-grid a {
+            color: #fff;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .contact-grid a:hover {
+            color: var(--accent);
+        }
+
+        .contact-grid i {
+            margin-right: 10px;
+            color: var(--accent);
+            width: 16px;
+        }
+
+        .large-phone {
+            font-family: var(--font-serif);
+            font-size: 2rem;
+            color: #fff !important;
+            display: block;
+            margin-top: 10px;
+        }
+
+        footer {
+            background: #091016;
+            color: rgba(255,255,255,0.4);
+            padding: 35px 0;
+            text-align: center;
+            font-size: 0.85rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            letter-spacing: 0.05em;
+        }
+
+        footer a {
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        footer a:hover {
+            color: var(--accent);
+        }
+
+        /* ===== RESPONSIVE DISCIPLINE ===== */
+        @media (max-width: 992px) {
+            .hero h1 { font-size: 3.2rem; }
+            .nav-links { gap: 20px; }
+            .preview-gallery-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            .header-flex {
+                flex-direction: column;
+                gap: 20px;
+            }
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+            .hero h1 { font-size: 2.5rem; }
+            section { padding: 70px 0; }
+            .section-title { font-size: 2.2rem; }
+            .preview-gallery-grid { grid-template-columns: 1fr; }
+            .map-wrapper { height: 320px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ===== NAVIGATION ===== -->
+<header>
+    <div class="container header-flex">
+        <div class="logo">Best Western <span>Premier Dynasty</span></div>
+        <ul class="nav-links">
+            <li><a href="#rooms">Accommodations</a></li>
+            <li><a href="#gallery-preview">Gallery</a></li>
+            <li><a href="#amenities">Wellness</a></li>
+            <li><a href="#surroundings">The Experience</a></li>
+            <li><a href="#contact">Concierge</a></li>
+            <li><a href="#contact" class="nav-cta">Reserve Stay</a></li>
+        </ul>
+    </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+    <div class="container">
+        <h1>Refined Luxury <span>Without Compromise</span></h1>
+        <p>
+            Experience spacious bespoke suites, artisan wellness spaces, and unparalleled luxury situated seamlessly within the beating heart of Addis Ababa.
+        </p>
+        <div class="hero-buttons">
+            <a href="#contact" class="btn">Book Direct</a>
+            <a href="#rooms" class="btn btn-outline">View Collection</a>
+        </div>
+    </div>
+</section>
+
+<!-- ===== ACCOMMODATIONS ===== -->
+<section id="rooms">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-tag">Sanctuary</span>
+            <h2 class="section-title">The Living Collection</h2>
+        </div>
+        <div class="room-grid">
+            <div class="room-card">
+                <div class="room-image-placeholder">
+                    <i class="fas fa-bed"></i>
+                </div>
+                <div class="room-content">
+                    <h3>Standard Room</h3>
+                    <p>Thoughtfully tailored space wrapped in plush, fully climate-controlled aesthetics perfectly optimized for executive rest.</p>
+                </div>
+            </div>
+            <div class="room-card">
+                <div class="room-image-placeholder">
+                    <i class="fas fa-expand"></i>
+                </div>
+                <div class="room-content">
+                    <h3>Superior Queen</h3>
+                    <p>An expansive footprint configured with custom work spaces, an elegant queen-sized bedding layout, and room to linger.</p>
+                </div>
+            </div>
+            <div class="room-card">
+                <div class="room-image-placeholder">
+                    <i class="fas fa-crown"></i>
+                </div>
+                <div class="room-content">
+                    <h3>Premier Suite</h3>
+                    <p>Our flagship luxury expression. Features standalone formal lounge sections, custom balconies, and curated bespoke amenities.</p>
+                </div>
+            </div>
+            <div class="room-card">
+                <div class="room-image-placeholder">
+                    <i class="fas fa-user-friends"></i>
+                </div>
+                <div class="room-content">
+                    <h3>Twin Room</h3>
+                    <p>Flawlessly split premium layout containing two signature independent beds paired with hyper-modern spatial design.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== THE PORTRAIT GALLERY PREVIEW SECTION ===== -->
+<section id="gallery-preview" style="background: #0F1A24; color: #fff; text-align: center;">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-tag" style="color: var(--accent);">Visual Collection</span>
+            <h2 class="section-title" style="color: #fff;">A Glimpse Of Prestige</h2>
+        </div>
+        <p style="max-width: 650px; margin: -40px auto 40px; color: rgba(255,255,255,0.7); font-weight: 300; font-size: 1.05rem;">
+            Step inside our state-of-the-art living collection and world-class health facilities. Every asset is precisely structured to fulfill absolute aesthetic tranquility.
+        </p>
+        
+        <div class="preview-gallery-grid">
+            <div class="preview-img-wrapper">
+                <img src="https://encrypted-tbn3.gstatic.com/licensed-image?q=tbn:ANd9GcSYcO-nhFN9BsCPehAyNrCG2iEUPWPe6eOzGBpZLsaQwBhIO1sZdqWJWRpocCEUtPk06sNDGaQD3kdq-K0" alt="Bespoke Executive Room Grid Selection" />
+                <div class="preview-overlay-title">Living Areas</div>
+            </div>
+            <div class="preview-img-wrapper">
+                <img src="https://encrypted-tbn3.gstatic.com/licensed-image?q=tbn:ANd9GcQWp6UUxUe3ANP6zFjqpTWvRqfNawWiDQiH1GqfuZuK6_uhx6RPGWAtpBnm5O80LkOY80OFTcWCR6NMw1E" alt="Premier Grand Suite Selection View" />
+                <div class="preview-overlay-title">Premier Suites</div>
+            </div>
+            <div class="preview-img-wrapper">
+                <img src="https://encrypted-tbn2.gstatic.com/licensed-image?q=tbn:ANd9GcRWM2mw9xQP3eDffRy2oG5ebzbobWQz9HFXzIlEIzWBMSswNydAgUzZVmvnWZIRmTAkM2T91CQ5Mn5SD-g" alt="Indoor Restorative Thermal Pool Area" />
+                <div class="preview-overlay-title">Wellness Hubs</div>
+            </div>
+        </div>
+
+        <div style="margin-top: 50px;">
+            <a href="gallery.html" class="btn" style="border-color: var(--accent); background: var(--accent);">Launch Portfolio Gallery</a>
+        </div>
+    </div>
+</section>
+
+<!-- ===== WELLNESS & AMENITIES ===== -->
+<section id="amenities" class="amenities-section">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-tag">Indulgence</span>
+            <h2 class="section-title">The Resort Amenities</h2>
+        </div>
+        <div class="amenities-grid">
+            <div class="amenity-item">
+                <i class="fas fa-water"></i>
+                <h4>Thermal Pool</h4>
+                <p>Crisp warm waters precision-engineered for year-round indulgence, complemented with poolside service.</p>
+            </div>
+            <div class="amenity-item">
+                <i class="fas fa-spa"></i>
+                <h4>Moroccan Bath</h4>
+                <p>Authentic deeply restorative body purification design tailored to increase circulation and soothe stress.</p>
+            </div>
+            <div class="amenity-item">
+                <i class="fas fa-dumbbell"></i>
+                <h4>Luxury Gym</h4>
+                <p>Elite athletic training equipment integrated alongside high-end private steam and Finnish sauna facilities.</p>
+            </div>
+            <div class="amenity-item">
+                <i class="fas fa-handshake"></i>
+                <h4>Meeting Spaces</h4>
+                <p>A corporate environment built for high-stakes dealmaking, elite conferences, and pristine private banquets.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== QUOTE EXCELLENCE ===== -->
+<section class="testimonial-section">
+    <div class="container">
+        <div class="testimonial">
+            <p>
+                “An exquisite hotel environment featuring perfectly appointed living spaces. Located safely inside the city's finest district with seamless close-proximity airport transits. Secure, effortless, and genuinely magnificent hospitality.”
+            </p>
+            <div class="author">— Verified International Guest</div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== THE EXPERIENCE / SURROUNDINGS ===== -->
+<section id="surroundings">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-tag">Discovery</span>
+            <h2 class="section-title">The Neighborhood Experience</h2>
+        </div>
+        <div class="surround-grid">
+            <div class="surround-card">
+                <h4><i class="fas fa-leaf"></i> Ethio-China Friendship Park</h4>
+                <p>An elegant modern urban retreat highlighting calm interior visual lakes, pristine botanical paths, and authentic traditional architecture pavilions.</p>
+            </div>
+            <div class="surround-card">
+                <h4><i class="fas fa-landmark"></i> Unity Park</h4>
+                <p>A sprawling historical canvas of lush botanical systems, dynamic cultural installations, and a quiet luxury rest away from active city energy.</p>
+            </div>
+            <div class="surround-card">
+                <h4><i class="fas fa-compass"></i> Custom Concierge Tours</h4>
+                <p>Allow our specialized in-house concierge team to design personalized, safely guided city passages exploring the deep heart of Addis Ababa.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== GEOLOCATION EMBED INTERACTIVE MAP ===== -->
+<div class="map-wrapper">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3745.840335844269!2d38.76839427478007!3d8.987851591071841!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x164b85dc85973937%3A0xed8c16224fb41894!2sBest%20Western%20Premier%20Dynasty!5e1!3m2!1sen!2set!4v1783071127258!5m2!1sen!2set" 
+    width="600" 
+    height="450" 
+    style="border:0;" 
+    allowfullscreen="" 
+    loading="lazy" 
+    referrerpolicy="strict-origin-when-cross-origin">
+</iframe>
+</div>
+
+<!-- ===== CONCIERGE & BOOKING ===== -->
+<section id="contact" class="contact-section">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-tag">Reservations</span>
+            <h2 class="section-title" style="color:#fff;">Connect With The Concierge</h2>
+        </div>
+        <div class="contact-grid">
+            <div>
+                <h4>The Estate</h4>
+                <p><strong>Best Western Premier Dynasty</strong></p>
+                <p>Bole, Wollo Sefer, Ethio China Street<br>Addis Ababa, Ethiopia</p>
+                <p style="font-size: 0.85rem; color: var(--accent); margin-top: 15px;">89 Custom Balcony Rooms & Premium Suites</p>
+            </div>
+            <div>
+                <h4>Inquiries</h4>
+                <p><i class="fas fa-phone-alt"></i> <a href="tel:+251114174100">+251 114 174 100</a></p>
+                <p><i class="fas fa-phone-alt"></i> <a href="tel:+251114174117">+251 114 174 117</a></p>
+                <p><i class="fas fa-mobile-alt"></i> <a href="tel:+251914989898">+251 914 989 898</a></p>
+            </div>
+            <div>
+                <h4>Digital Desk</h4>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:reservations@bwpremieraddis.com">reservations@bwpremieraddis.com</a></p>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:info@bwpremieraddis.com">info@bwpremieraddis.com</a></p>
+            </div>
+            <div>
+                <h4>Direct Booking Line</h4>
+                <span class="large-phone">+251 114 174 100</span>
+                <p style="font-size: 0.8rem; opacity: 0.5; margin-top: 10px;">Operational 24 hours a day, 7 days a week.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== FOOTER SECTOR ===== -->
+<footer>
+    <div class="container">
+        <p>&copy; 2026 Best Western Premier Dynasty Hotel. Built with absolute distinction.</p>
+        <p style="margin-top: 12px;">
+            <a href="mailto:reservations@bwpremieraddis.com">Reservations Desk</a> &middot; 
+            <a href="mailto:info@bwpremieraddis.com">General Inquiries</a>
+        </p>
+    </div>
+</footer>
+
+</body>
+</html>

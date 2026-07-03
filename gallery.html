@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>The Gallery Collection | Best Western Premier Dynasty Hotel</title>
+    
+    <!-- Google Fonts: Editorial Serif + Clean Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        /* ===== LUXURY DESIGN SYSTEM VARIABLE ALIGNMENT ===== */
+        :root {
+            --primary: #0F1A24;
+            --accent: #D4AF37;
+            --accent-hover: #AA8417;
+            --bg-light: #FBFBFA;
+            --bg-dark: #152232;
+            --text-main: #2D3136;
+            --text-muted: #6E747D;
+            --font-serif: 'Playfair Display', serif;
+            --font-sans: 'Inter', sans-serif;
+            --transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background: var(--bg-light);
+            color: var(--text-main);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        /* ===== NAVIGATION BAR ===== */
+        header {
+            background: var(--primary);
+            color: #fff;
+            padding: 24px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .header-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-serif);
+            font-size: 1.4rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .logo span {
+            color: var(--accent);
+            font-weight: 400;
+            font-family: var(--font-sans);
+            font-size: 0.8rem;
+            border: 1px solid var(--accent);
+            padding: 2px 8px;
+            margin-left: 8px;
+            letter-spacing: 0.1em;
+        }
+
+        .btn-back {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 500;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-back:hover {
+            color: var(--accent);
+        }
+
+        /* ===== EDITORIAL HERO ===== */
+        .gallery-hero {
+            background: linear-gradient(to bottom, var(--primary), var(--bg-dark));
+            color: #fff;
+            padding: 100px 0 80px;
+            text-align: center;
+        }
+
+        .gallery-hero h1 {
+            font-family: var(--font-serif);
+            font-size: 3.8rem;
+            font-weight: 400;
+            margin-bottom: 15px;
+        }
+
+        .gallery-hero p {
+            color: rgba(255,255,255,0.7);
+            max-width: 600px;
+            margin: 0 auto;
+            font-weight: 300;
+            font-size: 1.1rem;
+        }
+
+        /* ===== FILTER TABS ===== */
+        .gallery-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 50px 0;
+            list-style: none;
+        }
+
+        .tab-item {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            font-weight: 600;
+            color: var(--text-muted);
+            cursor: pointer;
+            padding-bottom: 6px;
+            border-bottom: 2px solid transparent;
+            transition: var(--transition);
+        }
+
+        .tab-item.active, .tab-item:hover {
+            color: var(--primary);
+            border-bottom-color: var(--accent);
+        }
+
+        /* ===== PORTFOLIO GRID EXPRESSION ===== */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 40px;
+            margin-bottom: 120px;
+        }
+
+        .gallery-card {
+            background: #fff;
+            border: 1px solid #ECEBE8;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .gallery-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(15,26,36,0.06);
+            border-color: var(--accent);
+        }
+
+        .image-wrapper {
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+            background: #eee;
+            position: relative;
+        }
+
+        .image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .gallery-card:hover .image-wrapper img {
+            transform: scale(1.05);
+        }
+
+        .card-meta {
+            padding: 30px;
+        }
+
+        .card-tag {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .card-meta h3 {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .card-meta p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--primary);
+            color: rgba(255,255,255,0.4);
+            padding: 40px 0;
+            text-align: center;
+            font-size: 0.85rem;
+            letter-spacing: 0.05em;
+        }
+
+        @media (max-width: 768px) {
+            .gallery-hero h1 { font-size: 2.8rem; }
+            .gallery-grid { grid-template-columns: 1fr; }
+            .gallery-tabs { flex-direction: column; align-items: center; gap: 15px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ===== TOP NAVIGATION BAR ===== -->
+<header>
+    <div class="container header-flex">
+        <a href="index.html" class="logo">Best Western <span>Premier Dynasty</span></a>
+        <a href="index.html" class="btn-back"><i class="fas fa-arrow-left"></i> Return to Main Estate</a>
+    </div>
+</header>
+
+<!-- ===== HERO SECTOR ===== -->
+<section class="gallery-hero">
+    <div class="container">
+        <h1>The Portrait Gallery</h1>
+        <p>A visual exploration of tailored architectural choices, fine Ethiopian heritage accents, and holistic wellness configurations.</p>
+    </div>
+</section>
+
+<!-- ===== CURATED COLLECTION GRID ===== -->
+<main class="container" style="margin-top: 40px;">
+    <div class="gallery-grid">
+        
+        <!-- Standard Room -->
+        <div class="gallery-card">
+            <div class="image-wrapper">
+                <img src="https://encrypted-tbn3.gstatic.com/licensed-image?q=tbn:ANd9GcSYcO-nhFN9BsCPehAyNrCG2iEUPWPe6eOzGBpZLsaQwBhIO1sZdqWJWRpocCEUtPk06sNDGaQD3kdq-K0" alt="Standard Luxury Room Living Design" />
+            </div>
+            <div class="card-meta">
+                <span class="card-tag">Accommodations</span>
+                <h3>Standard Room</h3>
+                <p>An inviting sanctuary fully carpeted, containing streamlined automated climate features intended for pure tranquility.</p>
+            </div>
+        </div>
+
+        <!-- Superior Queen -->
+        <div class="gallery-card">
+            <div class="image-wrapper">
+                <img src="https://encrypted-tbn3.gstatic.com/licensed-image?q=tbn:ANd9GcRQlSVpIv4uCmPvhLIXwVtaVqJ5GRFfdYX0SMeH8F4OKykT4D_kBySnRGAnlwJXv2ZQbP79XF_OVvPXFkQ" alt="Superior Queen Room Custom Setup" />
+            </div>
+            <div class="card-meta">
+                <span class="card-tag">Accommodations</span>
+                <h3>Superior Queen</h3>
+                <p>Thoughtfully proportioned footprints engineered to present distinct modular workspaces alongside premier bedding designs.</p>
+            </div>
+        </div>
+
+        <!-- Premier Suite -->
+        <div class="gallery-card">
+            <div class="image-wrapper">
+                <img src="https://encrypted-tbn3.gstatic.com/licensed-image?q=tbn:ANd9GcQWp6UUxUe3ANP6zFjqpTWvRqfNawWiDQiH1GqfuZuK6_uhx6RPGWAtpBnm5O80LkOY80OFTcWCR6NMw1E" alt="Luxury Executive Premier Suite Salon" />
+            </div>
+            <div class="card-meta">
+                <span class="card-tag">Accommodations</span>
+                <h3>Premier Suite</h3>
+                <p>Our grandest spatial configuration, offering an expansive separate guest lounge, viewing balcony, and premium fixtures.</p>
+            </div>
+        </div>
+
+        <!-- Twin Room -->
+        <div class="gallery-card">
+            <div class="image-wrapper">
+                <img src="https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcRvv2f1pbs71bq6SJKKepBposfVsYDCzKRkqMwj0sCP3t337QZqEuGaI397xQ0B_ajzOOLTQewi65n_y14" alt="Twin Room Modern Suite Configuration" />
+            </div>
+            <div class="card-meta">
+                <span class="card-tag">Accommodations</span>
+                <h3>Twin Room</h3>
+                <p>The optimal choice for corporate peers or traveling companions, highlighting two tailored independent signature bedding spreads.</p>
+            </div>
+        </div>
+
+        <!-- Swimming Pool -->
+        <div class="gallery-card">
+            <div class="image-wrapper">
+                <img src="https://encrypted-tbn2.gstatic.com/licensed-image?q=tbn:ANd9GcRWM2mw9xQP3eDffRy2oG5ebzbobWQz9HFXzIlEIzWBMSswNydAgUzZVmvnWZIRmTAkM2T91CQ5Mn5SD-g" alt="Sleek Indoor Spa Swimming Pool Area" />
+            </div>
+            <div class="card-meta">
+                <span class="card-tag">Wellness Facilities</span>
+                <h3>Thermal Swimming Pool</h3>
+                <p>Soothe mind and muscle within crystal-clear, expertly heated thermal waters crafted for timeless year-round enjoyment.</p>
+            </div>
+        </div>
+
+        <!-- Moroccan Bath -->
+        <div class="gallery-card">
+            <div class="image-wrapper">
+                <img src="https://encrypted-tbn1.gstatic.com/licensed-image?q=tbn:ANd9GcRs3PFsh_HhIbFNwDsjklSLJz-fF29hqkFs41Uz95R-8GdbFBzYIyZEjm8jLavvzsoWhgXuuuXWZeH_S7M" alt="Authentic Moroccan Hamam Treatment Suite" />
+            </div>
+            <div class="card-meta">
+                <span class="card-tag">Wellness Facilities</span>
+                <h3>Moroccan Hamam Bath</h3>
+                <p>An authentic historic structural escape optimized for absolute detoxifying body scrubs, deep relaxation, and mental clarity.</p>
+            </div>
+        </div>
+
+        <!-- Luxury Gym -->
+        <div class="gallery-card">
+            <div class="image-wrapper">
+                <img src="https://encrypted-tbn2.gstatic.com/licensed-image?q=tbn:ANd9GcRxxRJ5UXVaokzShsWV7vaor_wON8TBK7i7JX4I3-Q08g4MI-AuEJmIN_bXg9bslKHM65MvicXsVKd1KWA" alt="Luxury Fitness Cardio Floor with View" />
+            </div>
+            <div class="card-meta">
+                <span class="card-tag">Wellness Facilities</span>
+                <h3>State-of-the-Art Fitness Center</h3>
+                <p>Maintain your rigorous athletic flow using top-tier dynamic weight and cardio systems paired with premium saunas.</p>
+            </div>
+        </div>
+
+        <!-- Meeting Facilities -->
+        <div class="gallery-card">
+            <div class="image-wrapper">
+                <img src="https://encrypted-tbn3.gstatic.com/licensed-image?q=tbn:ANd9GcSlyzEp1SFVK5hm9FL502FJXNHTMZeyayI6BOWE-g48lEgTCGjmwaWAAEMpYSuQ810iM_7dvd6kdDG1xxQ" alt="Luxury Executive Conference Room Setup" />
+            </div>
+            <div class="card-meta">
+                <span class="card-tag">Corporate Facilities</span>
+                <h3>Meeting & Private Event Suites</h3>
+                <p>Bespoke executive presentation settings offering pristine digital acoustics, high-speed fidelity, and flawless banquet catering.</p>
+            </div>
+        </div>
+
+    </div>
+</main>
+
+<!-- ===== FOOTER SECTOR ===== -->
+<footer>
+    <div class="container">
+        <p>&copy; 2026 Best Western Premier Dynasty Hotel. Designed with uncompromising clarity.</p>
+    </div>
+</footer>
+
+</body>
+</html>
