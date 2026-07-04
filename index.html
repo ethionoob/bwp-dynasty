@@ -208,7 +208,7 @@
         /* ===== IMMERSIVE HERO SECTION ===== */
         .hero {
             position: relative;
-            background: linear-gradient(rgba(15, 26, 36, 0.7), rgba(15, 26, 36, 0.85)), url('hero.jpg') center/cover no-repeat;
+            background: linear-gradient(rgba(15, 26, 36, 0.7), rgba(15, 26, 36, 0.85)), url('/images/hero.jpg') center/cover no-repeat;
             color: #fff;
             padding: 160px 0 140px;
             text-align: center;
@@ -550,16 +550,88 @@
             .preview-gallery-grid { grid-template-columns: repeat(2, 1fr); }
         }
 
+        /* ===== HAMBURGER STYLES ===== */
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            color: #fff;
+            background: none;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .menu-toggle:hover {
+            color: var(--accent);
+        }
+
+        /* ===== RESPONSIVE DISCIPLINE ===== */
+        @media (max-width: 992px) {
+            .hero h1 { font-size: 3.2rem; }
+            .nav-links { gap: 20px; }
+            .preview-gallery-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
         @media (max-width: 768px) {
+            .logo {
+        white-space: normal; /* Allows "Best Western" and the badge to stack neatly */
+        font-size: 1.1rem;   /* Slightly drops font size so it sits beautifully on mobile */
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+            }
+    
+    .logo span {
+        margin-left: 0;     /* Aligns the gold badge perfectly underneath on mobile */
+            }
+
+            header {
+                padding: 16px 0;
+                }
+
+            .menu-toggle {
+                display: block; /* Show hamburger button */
+                }
+
             .header-flex {
-                flex-direction: column;
-                gap: 20px;
-            }
+                flex-direction: row; /* Keep logo and hamburger on same row */
+                justify-content: space-between;
+                align-items: center;
+                position: relative;
+                }
+
             .nav-links {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 15px;
+                display: none; /* Hide links by default */
+                flex-direction: column;
+                width: 100%;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                background: rgba(15, 26, 36, 0.98);
+                backdrop-filter: blur(10px);
+                padding: 20px 40px;
+                box-sizing: border-box;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+                gap: 20px;
+                z-index: 999;
             }
+
+            /* Toggle Class for JavaScript */
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                width: 100%;
+                text-align: center;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 10px 0;
+            }
+
             .hero h1 { font-size: 2.5rem; }
             section { padding: 70px 0; }
             .section-title { font-size: 2.2rem; }
@@ -571,10 +643,14 @@
 <body>
 
 <!-- ===== NAVIGATION ===== -->
+<!-- ===== NAVIGATION ===== -->
 <header>
     <div class="container header-flex">
         <div class="logo">Best Western <span>Premier Dynasty</span></div>
-        <ul class="nav-links">
+        <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+        </button>
+        <ul class="nav-links" id="nav-links">
             <li><a href="#rooms">Accommodations</a></li>
             <li><a href="#gallery-preview">Gallery</a></li>
             <li><a href="#amenities">Wellness</a></li>
@@ -804,5 +880,33 @@
     </div>
 </footer>
 
+<script>
+    const menuToggle = document.getElementById('menu-toggle');
+    const navLinks = document.getElementById('nav-links');
+    const toggleIcon = menuToggle.querySelector('i');
+
+    // Toggle menu visibility
+    menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        
+        // Dynamic icon shift (Bars to X mark)
+        if (navLinks.classList.contains('active')) {
+            toggleIcon.classList.remove('fa-bars');
+            toggleIcon.classList.add('fa-times');
+        } else {
+            toggleIcon.classList.remove('fa-times');
+            toggleIcon.classList.add('fa-bars');
+        }
+    });
+
+    // Collapse when any anchor link option is selected
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+            toggleIcon.classList.remove('fa-times');
+            toggleIcon.classList.add('fa-bars');
+        });
+    });
+</script>
 </body>
 </html>
